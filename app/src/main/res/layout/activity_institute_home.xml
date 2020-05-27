@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".admin_home">
 
-    <TextView
-        android:id="@+id/textView5"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/institute_home_Frame"
+        android:layout_above="@+id/insti_menu"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:gravity="center_vertical"
-        android:layout_marginTop="180dp"
-        android:text="Institute"
-        android:textStyle="bold"
-        android:textSize="45sp"
-        />
+        android:layout_alignParentBottom="true"
+        android:id="@+id/insti_menu"
+        app:menu="@menu/institute_menu"
+        android:background="@color/MainTheme"
+        app:itemRippleColor="@android:color/white"/>
 </RelativeLayout>

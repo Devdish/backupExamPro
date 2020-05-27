@@ -14,11 +14,7 @@
         <activity android:name=".institute_list">
 
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".public_login" />
         <activity android:name=".controller" />
@@ -26,7 +22,14 @@
         <activity android:name=".profile" />
         <activity android:name=".student_home" />
         <activity android:name=".institute_home" />
-        <activity android:name=".admin_home" />
+        <activity android:name=".admin_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".login" />
         <activity android:name=".signup" />
         <activity android:name=".MainActivity">
