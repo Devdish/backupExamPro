@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MTest Pro</string>
+    <string-array name="type_user">
+        <item>Admin</item>
+        <item>Institute</item>
+        <item>Student</item>
+
+
+    </string-array>
+
+
+    <string-array name="for_registration">
+        <item>institute</item>
+        <item>student</item>
+    </string-array>
+</resources>
