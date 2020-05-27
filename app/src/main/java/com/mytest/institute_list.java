@@ -15,6 +15,7 @@ public class institute_list extends AppCompatActivity {
     private AdapterRecycler adapterRecycler;
     private ArrayList<InsModal> insModalArrayList;
     private LinearLayoutManager linearLayoutManager;
+    private String s ="Hello";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
