@@ -53,7 +53,7 @@ String UserID;
                     }
 
                 }
-                else {
+                else if(TypeUser.equals(null)){
 
                     if(mAuth.getCurrentUser()!= null){
                         Intent i= new Intent(controller.this, student_home.class);
@@ -62,9 +62,18 @@ String UserID;
                     }
 
 
+
+                }
+                else {
+
+                    if (mAuth.getCurrentUser() != null) {
+                        Intent i = new Intent(controller.this, student_home.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
 
-            }
+                }
         });
 
 
