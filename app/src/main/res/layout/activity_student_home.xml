@@ -12,12 +12,24 @@
         android:id="@+id/student_home_Frame"
         android:layout_above="@+id/user_menu"/>
 
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:id="@+id/user_menu"-->
+<!--        app:menu="@menu/user_menu"-->
+<!--        android:background="@color/MainTheme"-->
+<!--        app:itemRippleColor="@android:color/white"/>-->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/user_menu"
         app:menu="@menu/user_menu"
-        android:background="@color/MainTheme"
-        app:itemRippleColor="@android:color/white"/>
+        android:background="@drawable/menu_background"
+        app:itemRippleColor="@android:color/white"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        />
 </RelativeLayout>

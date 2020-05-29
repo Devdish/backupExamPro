@@ -65,7 +65,9 @@ FirebaseAuth mAuth;
 
 
                 case  R.id.institute_Settings:
-                    selectedFragment= new Institute_Settings_Fragment();
+//                    selectedFragment= new Institute_Settings_Fragment();
+                    selectedFragment= new Admin_setting_Fragment();
+
                     break;
             }
 

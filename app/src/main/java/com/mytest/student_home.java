@@ -64,7 +64,8 @@ public class student_home extends AppCompatActivity {
 
 
                 case  R.id.student_Settings:
-                    selectedFragment= new Student_Video_Fragment();
+//                    selectedFragment= new Student_Video_Fragment();
+                    selectedFragment= new Admin_setting_Fragment();
                     break;
             }
 

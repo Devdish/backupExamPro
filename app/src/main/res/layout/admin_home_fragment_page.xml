@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/cat_back">
 
 
     <LinearLayout
@@ -12,25 +12,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/menu_background"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Registered Institute"
-                android:textColor="@android:color/white"
-                android:textAlignment="center"
+                android:text="Welcome\nAdmin"
+                android:textColor="@color/FontColor"
+
                 android:gravity="center_vertical"
                 android:textSize="35sp"
                 android:fontFamily="@font/chewy"
                 />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/admin_registered_institute_Recycler"
-            />
+
 
 
 

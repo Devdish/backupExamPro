@@ -5,21 +5,23 @@ public class PreoductModel {
 
 
     private String Institute;
-    private String Name;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
+
+    private String name;
+
 
 
     private PreoductModel() {
     }
     private PreoductModel(String Institute,String Name) {
-    this.Name= Name;
+    this.name= name;
     this.Institute= Institute;
     }
 

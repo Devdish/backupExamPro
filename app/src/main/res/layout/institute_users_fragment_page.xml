@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#ff0070">
+    android:background="@drawable/cat_back">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Students"
+        android:textColor="@color/FontColor"
+        android:id="@+id/txt"
+        android:gravity="center_vertical"
+        android:textSize="35sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/chewy"
+        android:padding="20dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/options_back"
+        android:layout_below="@+id/txt"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 
 </RelativeLayout>

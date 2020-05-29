@@ -161,7 +161,7 @@ ProgressBar load;
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(signup.this,"Reg. Successful",Toast.LENGTH_LONG).show();
 
-                            Intent i= new Intent(signup.this,controller.class);
+                            Intent i= new Intent(signup.this,Choose_Institute.class);
                             startActivity(i);
 
 

@@ -14,10 +14,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -31,7 +33,7 @@ public class public_login extends AppCompatActivity {
     RadioButton gender,userCat;
 
     FirebaseAuth mAuth;
-    FirebaseFirestore DataB;
+    FirebaseFirestore DataB,db;
     String userID;
 
     @Override
@@ -46,6 +48,7 @@ public class public_login extends AppCompatActivity {
         pass1=(EditText)findViewById(R.id.pass1);
         pass2=(EditText)findViewById(R.id.pass2);
         DataB= FirebaseFirestore.getInstance();
+
         register=(Button)findViewById(R.id.register);
         genderselect=(RadioGroup)findViewById(R.id.gendergroup);
         type_user=(RadioGroup)findViewById(R.id.typegroup);
@@ -109,36 +112,38 @@ public class public_login extends AppCompatActivity {
                     pass2.setError("Password don't match");
                 }
                 else {
+
                     mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-
                                 String userIDS;
                                 userIDS= mAuth.getCurrentUser().getUid();
-
                                 FirebaseFirestore Datac= FirebaseFirestore.getInstance();
-                                Map<String,Object> data = new HashMap<>();
-                                data.put("Name",fullname);
-                                data.put("Email",Email);
-                                data.put("Mobile Number",Contact);
-                                data.put("Gender",Gender);
-                                data.put("Date of Birth",DOB);
-                                data.put("Password",Password);
-                                data.put("Type User",TypeUser);
-                                data.put("UID",userIDS);
+                            Map<String, Object> dis = new HashMap<>();
+                            dis.put("name", fullname);
+                            Datac.collection("Customers").add(dis);
+                            Map<String, Object> data = new HashMap<>();
+                            data.put("Name", fullname);
+                            data.put("Email", Email);
+                            data.put("Mobile Number", Contact);
+                            data.put("Gender", Gender);
+                            data.put("Date of Birth", DOB);
+                            data.put("Password", Password);
+                            data.put("Type User", TypeUser);
+                            data.put("UID", userIDS);
+                            data.put("name", fullname);
 
-                                Datac.collection("Users").document(userIDS).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(public_login.this,"Reg. Successful",Toast.LENGTH_LONG).show();
 
+                            Datac.collection("Users").document(userIDS).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(public_login.this, "Account Created Successful", Toast.LENGTH_LONG).show();
+                                }
 //                                        Intent i= new Intent(signup.this,controller.class);
 //                                        startActivity(i);
 
-
-                                    }
-                                });
+                            });
                             }
                             else {
                                 Toast.makeText(public_login.this,"Error Occure, Try Again",Toast.LENGTH_LONG).show();
