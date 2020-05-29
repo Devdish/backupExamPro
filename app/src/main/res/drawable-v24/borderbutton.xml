@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 <stroke
-    android:color="@color/colorPrimary"
+    android:color="@color/FontColor"
     android:width="3dp">
 
     <gradient

@@ -25,7 +25,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+//Firebase UI
+    implementation 'com.firebaseui:firebase-ui-firestore:6.2.1'
 
     //Firebase Dependencies
     implementation 'com.google.firebase:firebase-analytics:17.4.2'

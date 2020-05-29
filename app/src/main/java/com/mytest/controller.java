@@ -26,7 +26,6 @@ String UserID;
 
          DataB= FirebaseFirestore.getInstance();
         mAuth= FirebaseAuth.getInstance();
-//
 
         UserID= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         DocumentReference documentReference= DataB.collection("Users").document(UserID);

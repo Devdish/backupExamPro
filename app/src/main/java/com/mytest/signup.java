@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -36,7 +37,7 @@ RadioButton gender,userCat;
 FirebaseAuth mAuth;
 FirebaseFirestore DataB;
 String userID;
-
+ProgressBar load;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         final String SelectedUser= parent.getItemAtPosition(position).toString();
@@ -71,6 +72,8 @@ String userID;
         DataB= FirebaseFirestore.getInstance();
         register=(Button)findViewById(R.id.register);
         genderselect=(RadioGroup)findViewById(R.id.gendergroup);
+        load=(ProgressBar)findViewById(R.id.progressBarSignup);
+
         type_user=(RadioGroup)findViewById(R.id.typegroup);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +135,8 @@ String userID;
                     pass2.setError("Password don't match");
                 }
                 else {
+                    load.setVisibility(View.VISIBLE);
+
                     mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

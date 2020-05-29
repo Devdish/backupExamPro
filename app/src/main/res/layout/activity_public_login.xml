@@ -262,6 +262,16 @@
                         android:textStyle="bold"
                         android:layout_marginHorizontal="80dp"/>
 
+                    <ProgressBar
+                        android:id="@+id/progressBarLogin"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_marginTop="20dp"
+
+                        />
+
 
                 </LinearLayout>
 

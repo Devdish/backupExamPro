@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,9 @@ public class login extends AppCompatActivity {
     EditText Email,Password;
     Button loginbtn;
     TextView forgots;
+    ProgressBar loginprog;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class login extends AppCompatActivity {
         Password=(EditText)findViewById(R.id.PassL);
         loginbtn=(Button)findViewById(R.id.loginNow);
         forgots=(TextView)findViewById(R.id.forgot);
-
+         loginprog=(ProgressBar)findViewById(R.id.progressBarLogin);
 
 
         mAuth= FirebaseAuth.getInstance();
@@ -71,7 +75,7 @@ public class login extends AppCompatActivity {
                 }
                 else {
 
-
+                    loginprog.setVisibility(View.VISIBLE);
 
                     mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

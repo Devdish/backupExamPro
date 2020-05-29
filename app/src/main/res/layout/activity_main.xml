@@ -19,17 +19,14 @@
             android:padding="20dp"
             >
 
-            <TextView
+            <ImageView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/chewy"
-                android:text="MTest\n Pro"
+                android:layout_height="190dp"
+                android:src="@drawable/text"
                 android:textAlignment="center"
-                android:textColor="@android:color/white"
-                android:textSize="60sp"
-                android:textStyle="bold" />
+
+                android:padding="45dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -63,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:text="Join Now"
                     android:background="@drawable/borderbutton"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/FontColor"
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"/>
 

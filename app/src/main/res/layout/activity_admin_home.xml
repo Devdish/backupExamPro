@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/admin_home_Frame"
-        android:layout_above="@+id/admin_menu"/>
+        android:layout_above="@+id/admin_menu"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -18,8 +19,12 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/admin_menu"
         app:menu="@menu/admin_menu"
-        android:background="@color/MainTheme"
+        android:background="@drawable/menu_background"
         app:itemRippleColor="@android:color/white"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+
+
         />
 
 </RelativeLayout>
