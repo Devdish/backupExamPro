@@ -149,17 +149,17 @@ ProgressBar load;
                     Map<String,Object> data = new HashMap<>();
                     data.put("Name",fullname);
                     data.put("Email",Email);
-                    data.put("Mobile Number",Contact);
+                    data.put("Mobile_Number",Contact);
                     data.put("Gender",Gender);
-                    data.put("Date of Birth",DOB);
+                    data.put("Date_of_Birth",DOB);
                     data.put("Password",Password);
-                    data.put("Type User","Student");
+                    data.put("Type_User","Student");
                     data.put("UID",userIDS);
 
                     Datac.collection("Users").document(userIDS).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(signup.this,"Reg. Successful",Toast.LENGTH_LONG).show();
+                            Toast.makeText(signup.this,"Regtration Successful",Toast.LENGTH_LONG).show();
 
                             Intent i= new Intent(signup.this,Choose_Institute.class);
                             startActivity(i);

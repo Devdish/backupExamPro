@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp">
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -23,11 +23,26 @@
                 android:textSize="35sp"
                 android:fontFamily="@font/chewy"
                 />
+
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/options_back"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="20dp"
+            android:padding="0dp">
 
-
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Registered_Accounts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -124,11 +124,11 @@ public class Admin_signup_Fragment extends Fragment {
                                 Map<String,Object> data = new HashMap<>();
                                 data.put("Name",fullname);
                                 data.put("Email",Email);
-                                data.put("Mobile Number",Contact);
+                                data.put("Mobile_Number",Contact);
                                 data.put("Gender",Gender);
-                                data.put("Date of Birth",DOB);
+                                data.put("Date_of_Birth",DOB);
                                 data.put("Password",Password);
-                                data.put("Type User",TypeUser);
+                                data.put("Type_User",TypeUser);
                                 data.put("UID",userIDS);
 
                                 Datac.collection("Users").document(userIDS).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -142,6 +142,30 @@ public class Admin_signup_Fragment extends Fragment {
 
                                     }
                                 });
+
+
+                                //Start-------------------//
+
+                                if(TypeUser.equals("Institute")){
+                                    FirebaseFirestore db= FirebaseFirestore.getInstance();
+                                    Map<String,Object> dt= new HashMap<>();
+                                    dt.put("name",fullname);
+                                    db.collection("Customers").add(dt);
+                                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             }
                             else {
                                 Toast.makeText(getActivity(),"Error Occure, Try Again",Toast.LENGTH_LONG).show();

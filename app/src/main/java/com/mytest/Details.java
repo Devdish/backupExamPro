@@ -2,11 +2,9 @@ package com.mytest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.DragStartHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,58 +24,49 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.grpc.CallCredentials;
-
-public class Choose_Institute extends AppCompatActivity  {
+public class Details extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
     private  String userID;
     private FirebaseAuth mAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose__institute);
+        setContentView(R.layout.activity_details);
+
+
 
         firebaseFirestore= FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        mFirestoreList= findViewById(R.id.List_choose);
+        mFirestoreList= findViewById(R.id.users_data);
 
         //--Query------------------//
-        Query query=firebaseFirestore.collection("Customers");
+        Query query=firebaseFirestore.collection("Users");
 
         //Recycler Options--------------------//
-        FirestoreRecyclerOptions<ModelChoose> options= new FirestoreRecyclerOptions.Builder<ModelChoose>()
-                .setQuery(query,ModelChoose.class).build();
+        FirestoreRecyclerOptions<adminModelforlist> options= new FirestoreRecyclerOptions.Builder<adminModelforlist>()
+                .setQuery(query,adminModelforlist.class).build();
         //---adapter------------------------//
 
-        adapter=new FirestoreRecyclerAdapter<ModelChoose,ProductViewHolder>(options) {
+        adapter=new FirestoreRecyclerAdapter<adminModelforlist, Details.ProductViewHolder>(options) {
+
 
             @NonNull
             @Override
             public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-               View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_item_type_institute,parent,false);
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.show_registered_list,parent,false);
 
-                return new  ProductViewHolder(view);
+                return new ProductViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final ModelChoose model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull adminModelforlist model) {
                 holder.name.setText(model.getName());
-                holder.clicked.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(Choose_Institute.this,controller.class);
-                       i.putExtra("Selected Institute", model.getName());
-                       FirebaseFirestore databas= FirebaseFirestore.getInstance();
-                        userID= mAuth.getCurrentUser().getUid();
-                        Map<String,Object> selectInst = new HashMap<>();
-                        selectInst.put("Institute",model.getName());
-                        databas.collection("Users").document(userID).set(selectInst, SetOptions.merge());
-                        Toast.makeText(Choose_Institute.this,"Selected Institute is "+model.getName().toString(),Toast.LENGTH_LONG).show();
-                        startActivity(i);
-                    }
-                });
+                holder.type.setText(model.getType_User());
+
             }
         };
 
@@ -96,18 +85,20 @@ public class Choose_Institute extends AppCompatActivity  {
     }
 
 
-
-
     class  ProductViewHolder extends RecyclerView.ViewHolder{
 
-     private TextView name;
-     private LinearLayout clicked;
+        private TextView name;
+        private TextView type;
+        private LinearLayout clickes;
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.name);
-            clicked= itemView.findViewById(R.id.item_click);
+            name= itemView.findViewById(R.id.name_user);
+            type= itemView.findViewById(R.id.type_user);
+            clickes= itemView.findViewById(R.id.clickable);
         }
     }
+
+
 
 
     @Override

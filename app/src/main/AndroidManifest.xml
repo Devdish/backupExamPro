@@ -11,30 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Choose_Institute">
-
-        </activity>
-        <activity android:name=".Category">
-
-        </activity>
-        <activity android:name=".institute_list"></activity>
-        <activity android:name=".public_login" />
-        <activity android:name=".controller" />
-        <activity android:name=".forgot_password" />
-        <activity android:name=".profile"></activity>
-        <activity android:name=".student_home" />
-        <activity android:name=".institute_home" />
-        <activity android:name=".admin_home" />
-        <activity android:name=".login" />
-        <activity android:name=".signup" />
-        <activity android:name=".MainActivity">
-
+        <activity android:name=".upload_pdf"></activity>
+        <activity android:name=".ShowToAdmin" />
+        <activity android:name=".Show_Profile" />
+        <activity android:name=".Details" />
+        <activity android:name=".splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Choose_Institute" />
+        <activity android:name=".Category" />
+        <activity android:name=".institute_list" />
+        <activity android:name=".public_login" />
+        <activity android:name=".controller" />
+        <activity android:name=".forgot_password" />
+        <activity android:name=".profile" />
+        <activity android:name=".student_home" />
+        <activity android:name=".institute_home" />
+        <activity android:name=".admin_home"></activity>
+        <activity android:name=".login" />
+        <activity android:name=".signup" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

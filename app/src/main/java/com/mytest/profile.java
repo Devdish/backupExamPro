@@ -58,8 +58,8 @@ public class profile extends AppCompatActivity {
 
                 name.setText(documentSnapshot.getString("Name"));
                 Gender.setText(documentSnapshot.getString("Gender"));
-                DOB.setText(documentSnapshot.getString("Date of Birth"));
-                Contact.setText(documentSnapshot.getString("Mobile Number"));
+                DOB.setText(documentSnapshot.getString("Date_of_Birth"));
+                Contact.setText(documentSnapshot.getString("Mobile_Number"));
                 Email.setText(documentSnapshot.getString("Email"));
 
 

@@ -33,7 +33,7 @@ String UserID;
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
 
-                String TypeUser=documentSnapshot.getString("Type User");
+                String TypeUser=documentSnapshot.getString("Type_User");
 
                 if(TypeUser.equals("Admin")){
 
