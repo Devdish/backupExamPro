@@ -87,7 +87,7 @@ public class Admin_Home_Fragment extends Fragment {
     }
 
 
-    private class ProductViewHolder extends RecyclerView.ViewHolder {
+    class ProductViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
         private TextView type;
@@ -99,24 +99,15 @@ public class Admin_Home_Fragment extends Fragment {
             type = itemView.findViewById(R.id.type_user);
             clickes = itemView.findViewById(R.id.clickable);
         }
-
-
-
-
     }
-
-
     @Override
     public void onStart() {
         super.onStart();
     adapter.startListening();
-
     }
-
     @Override
     public void onStop() {
         super.onStop();
         adapter.stopListening();
-
     }
 }

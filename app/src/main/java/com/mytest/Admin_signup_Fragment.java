@@ -151,6 +151,13 @@ public class Admin_signup_Fragment extends Fragment {
                                     Map<String,Object> dt= new HashMap<>();
                                     dt.put("name",fullname);
                                     db.collection("Customers").add(dt);
+
+                                    FirebaseFirestore dbs=FirebaseFirestore.getInstance();
+                                    Map<String,Object> inst= new HashMap<>();
+                                    inst.put("Name",fullname);
+                                    inst.put("uid",userIDS);
+
+                                    dbs.collection("Data").document(fullname).set(inst);
                                 }
 
 

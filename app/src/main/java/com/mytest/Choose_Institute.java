@@ -18,9 +18,14 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
@@ -74,6 +79,24 @@ public class Choose_Institute extends AppCompatActivity  {
                         Map<String,Object> selectInst = new HashMap<>();
                         selectInst.put("Institute",model.getName());
                         databas.collection("Users").document(userID).set(selectInst, SetOptions.merge());
+//                       String selectedInstitute= model.getName();
+//                        DocumentReference documentReference= //
+//                        FirebaseFirestore.getInstance().collection("Users")
+//                                .whereEqualTo("Name",selectedInstitute).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                for(QueryDocumentSnapshot doc: task.getResult()){
+//
+//                                    Toast.makeText(Choose_Institute.this, "Data Uploaded", Toast.LENGTH_SHORT).show();
+//
+//
+//                                }
+//
+//
+//                            }
+//                        });
+
+//                        DocumentReference documentReference= firebaseFirestore.collection("Users")
                         Toast.makeText(Choose_Institute.this,"Selected Institute is "+model.getName().toString(),Toast.LENGTH_LONG).show();
                         startActivity(i);
                     }

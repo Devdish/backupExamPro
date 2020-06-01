@@ -46,7 +46,7 @@ public class Admin_setting_Fragment extends Fragment {
         if (mAuth.getCurrentUser() == null) {
             Intent i = new Intent(getActivity(), login.class);
             startActivity(i);
-//            finish();
+            requireActivity().finish();
         }
 
                 Logout.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +55,7 @@ public class Admin_setting_Fragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent i= new Intent(getActivity(), login.class);
                 startActivity(i);
-//                finish();
+                requireActivity().finish();
 
 
                      }

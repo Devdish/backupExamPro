@@ -14,20 +14,52 @@
         android:fontFamily="@font/chewy"
         android:padding="20dp"
         />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/txt"
+
+android:layout_above="@+id/upload_new_video"
+    android:id="@+id/hat">
+
+
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/options_back"
-        android:layout_below="@+id/txt"
+
         android:layout_marginRight="40dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="5dp"
+        android:id="@+id/scr">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/youtube_list_recycler"
+             />
+        </LinearLayout>
+
     </ScrollView>
 
 
+
+</LinearLayout>
+    <Button
+        android:id="@+id/upload_new_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload new Youtube video"
+        android:background="@drawable/input_back"
+        android:textColor="@color/FontColor"
+        android:textStyle="bold"
+android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        />
 </RelativeLayout>
