@@ -1,2 +1,3 @@
+include ':lib'
 rootProject.name='MTest Pro'
 include ':app'

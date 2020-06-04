@@ -53,16 +53,6 @@ public class student_home extends AppCompatActivity {
                     selectedFragment= new Student_Result_Fragment();
                     break;
 
-                case  R.id.student_videos:
-                    selectedFragment= new Student_Video_Fragment();
-                    break;
-
-
-                case  R.id.student_books:
-                    selectedFragment= new Student_Books_Fragment();
-                    break;
-
-
                 case  R.id.student_Settings:
 //                    selectedFragment= new Student_Video_Fragment();
                     selectedFragment= new Admin_setting_Fragment();

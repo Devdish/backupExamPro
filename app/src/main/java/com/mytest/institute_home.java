@@ -50,13 +50,6 @@ FirebaseAuth mAuth;
                     selectedFragment= new Institute_Home_Fragment();
                     break;
 
-                case  R.id.institute_videos:
-                    selectedFragment= new Institute_Videos_Fragment();
-                    break;
-
-                case  R.id.institute_books:
-                    selectedFragment= new Institute_Books_Fragment();
-                    break;
 
 
                 case  R.id.institute_students:

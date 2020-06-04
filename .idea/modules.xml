@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MTest_Pro.iml" filepath="$PROJECT_DIR$/.idea/modules/MTest_Pro.iml" group="MTest_Pro" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="MTest Pro/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/lib.iml" group="MTest Pro/lib" />
     </modules>
   </component>
 </project>

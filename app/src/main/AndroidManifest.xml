@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VideoPlayer"></activity>
+        <activity android:name=".freshSignup"></activity>
+        <activity android:name=".VideoPlayer" />
         <activity android:name=".upload_Videos" />
         <activity android:name=".upload_pdf" />
         <activity android:name=".ShowToAdmin" />
@@ -32,7 +33,7 @@
         <activity android:name=".forgot_password" />
         <activity android:name=".profile" />
         <activity android:name=".student_home" />
-        <activity android:name=".institute_home"></activity>
+        <activity android:name=".institute_home" />
         <activity android:name=".admin_home" />
         <activity android:name=".login" />
         <activity android:name=".signup" />

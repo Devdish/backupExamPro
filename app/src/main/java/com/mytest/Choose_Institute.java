@@ -78,26 +78,8 @@ public class Choose_Institute extends AppCompatActivity  {
                         userID= mAuth.getCurrentUser().getUid();
                         Map<String,Object> selectInst = new HashMap<>();
                         selectInst.put("Institute",model.getName());
-                        databas.collection("Users").document(userID).set(selectInst, SetOptions.merge());
-//                       String selectedInstitute= model.getName();
-//                        DocumentReference documentReference= //
-//                        FirebaseFirestore.getInstance().collection("Users")
-//                                .whereEqualTo("Name",selectedInstitute).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                for(QueryDocumentSnapshot doc: task.getResult()){
-//
-//                                    Toast.makeText(Choose_Institute.this, "Data Uploaded", Toast.LENGTH_SHORT).show();
-//
-//
-//                                }
-//
-//
-//                            }
-//                        });
-
-//                        DocumentReference documentReference= firebaseFirestore.collection("Users")
-                        Toast.makeText(Choose_Institute.this,"Selected Institute is "+model.getName().toString(),Toast.LENGTH_LONG).show();
+                        databas.collection("Users").document().set(selectInst, SetOptions.merge());
+                        Toast.makeText(Choose_Institute.this,"Selected Institute is "+model.getName(),Toast.LENGTH_LONG).show();
                         startActivity(i);
                     }
                 });
@@ -107,20 +89,7 @@ public class Choose_Institute extends AppCompatActivity  {
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
     class  ProductViewHolder extends RecyclerView.ViewHolder{
 
      private TextView name;
@@ -131,14 +100,11 @@ public class Choose_Institute extends AppCompatActivity  {
             clicked= itemView.findViewById(R.id.item_click);
         }
     }
-
-
     @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
     }
-
     @Override
     protected void onStop() {
         super.onStop();

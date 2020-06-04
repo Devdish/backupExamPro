@@ -6,17 +6,10 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Test"/>
 
-    <item android:id="@+id/institute_videos"
-        android:icon="@drawable/ic_video_library_black_24dp"
-        android:title="Videos"/>
-
-    <item android:id="@+id/institute_books"
-        android:icon="@drawable/ic_library_books_black_24dp"
-        android:title="Books"/>
 
     <item android:id="@+id/institute_students"
         android:icon="@drawable/ic_group_add_person_24dp"
-        android:title="Instiute"/>
+        android:title="Student"/>
 
     <item android:id="@+id/institute_Settings"
         android:icon="@drawable/ic_settings_black_24dp"

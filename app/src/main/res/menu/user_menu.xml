@@ -8,16 +8,6 @@
         android:icon="@drawable/ic_spellcheck_report_24dp"
         android:title="Resut"/>
 
-    <item android:id="@+id/student_videos"
-        android:icon="@drawable/ic_video_library_black_24dp"
-        android:title="Videos"/>
-
-    <item android:id="@+id/student_books"
-        android:icon="@drawable/ic_library_books_black_24dp"
-        android:title="Books"/>
-
-
-
     <item android:id="@+id/student_Settings"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="Setting"/>
