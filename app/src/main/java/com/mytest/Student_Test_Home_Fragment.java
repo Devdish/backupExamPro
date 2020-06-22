@@ -67,7 +67,7 @@ public class Student_Test_Home_Fragment extends Fragment {
         PagerAdapter adapter = new PagerAdapter(getChildFragmentManager());
 
         adapter.addFragment(new Tab1(),"Test");
-        adapter.addFragment(new Institute_Videos_Fragment(),"Video");
+        adapter.addFragment(new Tab2(),"Video");
         adapter.addFragment(new Tab3(),"Books");
         viewPager.setAdapter(adapter);
 

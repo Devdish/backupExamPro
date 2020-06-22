@@ -39,6 +39,7 @@ import java.util.Objects;
 import java.util.concurrent.Executor;
 
 public class Institute_Videos_Fragment extends Fragment {
+
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
@@ -46,111 +47,53 @@ public class Institute_Videos_Fragment extends Fragment {
     private FirebaseAuth mAuth;
     private VideoAdapter videoAdapter;
     private ArrayList<VideoModelClass> list;
-    private Button add ;
-    private String us;
-
+    private  Button add ;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
       View view= inflater.inflate(R.layout.institute_videos_fragment_page, container, false);
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mFirestoreList = view.findViewById(R.id.youtube_list_recycler);
         userID= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         list = new ArrayList<>();
-        videoAdapter =new VideoAdapter(getContext(),list);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(getContext()));
+        videoAdapter =new VideoAdapter(requireContext(),list);
+        mFirestoreList.setLayoutManager(new LinearLayoutManager(requireContext()));
         mFirestoreList.setAdapter(videoAdapter);
-        add=view.findViewById(R.id.upload_new_video);
-        final String[] name = new String[1];
-        final String[] type = new String[1];
-        final String[] ins= new String[1];
+       add= view.findViewById(R.id.upload_new_video);
+
 
 
 //
-//        Task<DocumentSnapshot> docReference= firebaseFirestore.collection("Users").document(userID).get();
-        DocumentReference documentReference= firebaseFirestore.collection("Users").document(userID);
+       Task<DocumentSnapshot> documentReference= firebaseFirestore.collection("Users").document(userID).get();
 
-        documentReference.addSnapshotListener((Executor) this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-
-                name[0] = documentSnapshot.getString("Name");
-                type[0] =documentSnapshot.getString("Type_User");
-                ins[0]= documentSnapshot.getString("Institute");
-
-
-                Log.d("name Check", "onCreate: "+ name[0]);
-                Log.d("TYPE  Check", "onCreate: "+ type[0]);
-
-                if(type[0].equals("Institute")){
-                    add.setVisibility(View.VISIBLE);
-
-                    add.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(getContext(),upload_Videos.class));
-                        }
-                    });
-
-
-                    us=name[0];
-
-
-                    Log.d("check name Dishant", "onCreate: "+ us);
 //        Toast.makeText(getContext(), "userID is "+ userID, Toast.LENGTH_SHORT).show();
-                    //--Query------------------//
-                    Query query = firebaseFirestore.collection("Data").document(us).collection("Videos");
+        //--Query------------------//
+        Query query = firebaseFirestore.collection("Data").document("Aaksh Academy").collection("Videos");
 
-                    query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            ArrayList<VideoModelClass> lis = new ArrayList<>();
-                            for (DocumentSnapshot d : queryDocumentSnapshots) {
-                                VideoModelClass v = d.toObject(VideoModelClass.class);
-                                lis.add(v);
-                                Log.d("gfahfgadh", v.getDate());
-                            }
-                            list.addAll(lis);
-                            videoAdapter.notifyDataSetChanged();
-                            Log.d("gfahfgadh", list.size() + "");
-                        }
-                    });
-
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                ArrayList<VideoModelClass> lis = new ArrayList<>();
+                for (DocumentSnapshot d : queryDocumentSnapshots) {
+                    VideoModelClass v = d.toObject(VideoModelClass.class);
+                    lis.add(v);
+                    Log.d("gfahfgadh", v.getDate());
                 }
-
-                else {
-                    Query query = firebaseFirestore.collection("Data").document(ins[0]).collection("Videos");
-
-                    query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            ArrayList<VideoModelClass> lis = new ArrayList<>();
-                            for (DocumentSnapshot d : queryDocumentSnapshots) {
-                                VideoModelClass v = d.toObject(VideoModelClass.class);
-                                lis.add(v);
-                                Log.d("gfahfgadh", v.getDate());
-                            }
-                            list.addAll(lis);
-                            videoAdapter.notifyDataSetChanged();
-                            Log.d("gfahfgadh", list.size() + "");
-                        }
-                    });
-
-
-
-
-                }
+                list.addAll(lis);
+                videoAdapter.notifyDataSetChanged();
+                Log.d("gfahfgadh", list.size() + "");
             }
         });
 
 
 
-
-
-return  view;
-
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),upload_Videos.class));            }
+        });
+        return  view;
     }
 
 
