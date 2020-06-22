@@ -213,7 +213,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="Student"
                                 android:textSize="20sp"
-                                android:textColor="#9B673AB7"/>
+                                android:textColor="#9B673AB7"
+                                android:visibility="gone"/>
 
                         </RadioGroup>
                     </LinearLayout>

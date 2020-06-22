@@ -92,20 +92,20 @@ public class freshSignup extends AppCompatActivity {
                     about.setError("Enter About Yourself");
                 } else {
                     load.setVisibility(View.VISIBLE);
-                    FirebaseFirestore Datac = FirebaseFirestore.getInstance();
-                    Map<String, Object> data = new HashMap<>();
-                    data.put("Name", fullname);
-                    data.put("Email", Email);
-                    data.put("Mobile_Number", Contact);
-                    data.put("Gender", Gender);
-                    data.put("Date_of_Birth", DOB);
-                    data.put("About", About);
-                    data.put("Type_User", "Student");
-
-                    Datac.collection("Users").document().set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(freshSignup.this, "Regtration Successful", Toast.LENGTH_LONG).show();
+//                    FirebaseFirestore Datac = FirebaseFirestore.getInstance();
+//                    Map<String, Object> data = new HashMap<>();
+//                    data.put("Name", fullname);
+//                    data.put("Email", Email);
+//                    data.put("Mobile_Number", Contact);
+//                    data.put("Gender", Gender);
+//                    data.put("Date_of_Birth", DOB);
+//                    data.put("About", About);
+//                    data.put("Type_User", "Student");
+//
+//                    Datac.collection("Users").document().set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(freshSignup.this, "Regtration Successful", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(freshSignup.this, Choose_Institute.class);
                             i.putExtra("name",fullname);
                             i.putExtra("Email",Email);
@@ -116,8 +116,9 @@ public class freshSignup extends AppCompatActivity {
                             i.putExtra("type_user","Student");
 
                             startActivity(i);
-                        }
-                    });
+                            finish();
+//                        }
+//                    });
                 }
 
             }

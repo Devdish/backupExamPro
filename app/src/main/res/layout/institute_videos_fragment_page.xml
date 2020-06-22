@@ -51,15 +51,15 @@ android:layout_above="@+id/upload_new_video"
 
 
 </LinearLayout>
-    <Button
-        android:id="@+id/upload_new_video"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload new Youtube video"
-        android:background="@drawable/input_back"
-        android:textColor="@color/FontColor"
-        android:textStyle="bold"
-android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/upload_new_video"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Upload new Youtube video"-->
+<!--        android:background="@drawable/input_back"-->
+<!--        android:textColor="@color/FontColor"-->
+<!--        android:textStyle="bold"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="15dp"-->
+<!--        />-->
 </RelativeLayout>

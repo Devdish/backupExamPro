@@ -13,8 +13,11 @@ import androidx.activity.ComponentActivity;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private Context context,mcon;
     private ArrayList<VideoModelClass> list;
+
 
 
     public VideoAdapter(Context context, ArrayList<VideoModelClass> list) {
@@ -35,6 +39,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.video_list_single_item, parent, false);
         return new VideoViewHolder(view);
+
+
 
     }
 
@@ -61,13 +67,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
          });
 
 
-        holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+         holder.youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+             @Override
+             public void onReady(YouTubePlayer youTubePlayer) {
+                 super.onReady(youTubePlayer);
 
-                youTubePlayer.loadVideo(modelClass.getKey(), 0);
-            }
-        });
+                 youTubePlayer.loadVideo(modelClass.getKey(), 0);
+             }
+         });
+
+
     }
 
     @Override
@@ -95,9 +104,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            youTubePlayerView = itemView.findViewById(R.id.youtube_player_view);
-//            LifecycleOwner lifecycleOwner;
-
+              youTubePlayerView = itemView.findViewById(R.id.youtube_player_view);
+//   //        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
+//            getLifecycle().addObserver(youTubePlayerView);
             title = itemView.findViewById(R.id.title_head);
             date = itemView.findViewById(R.id.time_head);
             clickes = itemView.findViewById(R.id.video_clickss);

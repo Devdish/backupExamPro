@@ -28,6 +28,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,15 +74,26 @@ public class Choose_Institute extends AppCompatActivity  {
                 holder.clicked.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(Choose_Institute.this,controller.class);
+                        Intent i = new Intent(Choose_Institute.this,RegEndUser.class);
                        i.putExtra("Selected Institute", model.getName());
                        FirebaseFirestore databas= FirebaseFirestore.getInstance();
-                        userID= mAuth.getCurrentUser().getUid();
+//                        userID= mAuth.getCurrentUser().getUid();
+                        String ema= getIntent().getStringExtra("Email").toString();
                         Map<String,Object> selectInst = new HashMap<>();
-                        selectInst.put("Institute",model.getName());
-                        databas.collection("Users").document().set(selectInst, SetOptions.merge());
+                        selectInst.put("name",getIntent().getStringExtra("name"));
+                        selectInst.put("email",getIntent().getStringExtra("Email"));
+                        selectInst.put("mobile",getIntent().getStringExtra("mobile"));
+                        selectInst.put("gender",getIntent().getStringExtra("gender"));
+                        selectInst.put("date_of_birth",getIntent().getStringExtra("dob"));
+                        selectInst.put("about",getIntent().getStringExtra("about"));
+                        selectInst.put("type_user",getIntent().getStringExtra("type_user"));
+                        selectInst.put("institute",model.getName());
+                        selectInst.put("date", DateFormat.getDateTimeInstance().format(new Date()));
+                        selectInst.put("status","not_verified");
+                        databas.collection("Data").document(model.getName()).collection("users").document(ema).set(selectInst);
                         Toast.makeText(Choose_Institute.this,"Selected Institute is "+model.getName(),Toast.LENGTH_LONG).show();
                         startActivity(i);
+                        finish();
                     }
                 });
             }

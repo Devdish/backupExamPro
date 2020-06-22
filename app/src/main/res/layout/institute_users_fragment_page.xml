@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/cat_back">
     <TextView
@@ -21,12 +22,68 @@
         android:background="@drawable/options_back"
         android:layout_below="@+id/txt"
         android:layout_marginRight="40dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="10dp"
+        android:padding="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/back_white"
+               android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:id="@+id/request">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    app:srcCompat="@drawable/iconfinder_paul_15_2524743" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Student Request"
+                    android:textAlignment="center"
+                    android:textColor="@color/FontColor"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/back_white"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/studentss">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    app:srcCompat="@drawable/iconfinder_paul_33_2534342" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/FontColor"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="30dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 

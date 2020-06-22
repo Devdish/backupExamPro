@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -34,7 +35,7 @@ String UserID;
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
 
                 String TypeUser=documentSnapshot.getString("Type_User");
-
+                Log.d("HomeUID", "onCreate: "+ TypeUser);
                 if(TypeUser.equals("Admin")){
 
                     if(mAuth.getCurrentUser()!= null){
@@ -50,6 +51,17 @@ String UserID;
                         startActivity(i);
                         finish();
                     }
+
+                }
+                else if(TypeUser.equals("Student")){
+
+                    if(mAuth.getCurrentUser()!= null){
+                        Intent i= new Intent(controller.this, student_home.class);
+                        startActivity(i);
+                        finish();
+                    }
+
+
 
                 }
                 else if(TypeUser.equals(null)){
@@ -74,6 +86,9 @@ String UserID;
 
                 }
         });
+
+
+
 
 
 

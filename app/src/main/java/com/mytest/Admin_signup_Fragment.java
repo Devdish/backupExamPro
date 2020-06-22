@@ -1,5 +1,6 @@
 package com.mytest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -136,8 +137,9 @@ public class Admin_signup_Fragment extends Fragment {
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(getActivity(),"Reg. Successful",Toast.LENGTH_LONG).show();
 
-//                                        Intent i= new Intent(signup.this,controller.class);
-//                                        startActivity(i);
+                                        Intent i= new Intent(getContext(),login.class);
+                                        startActivity(i);
+                                        requireActivity().finish();
 
 
                                     }
@@ -159,19 +161,6 @@ public class Admin_signup_Fragment extends Fragment {
 
                                     dbs.collection("Data").document(fullname).set(inst);
                                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                             }
                             else {

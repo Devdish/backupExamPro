@@ -1,24 +1,17 @@
 package com.mytest;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -28,17 +21,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
-
-import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.concurrent.Executor;
 
-public class Institute_Videos_Fragment extends Fragment {
+public class Videos_page extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
@@ -49,20 +37,21 @@ public class Institute_Videos_Fragment extends Fragment {
     private Button add ;
     private String us;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view= inflater.inflate(R.layout.institute_videos_fragment_page, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_videos_page);
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        mFirestoreList = view.findViewById(R.id.youtube_list_recycler);
+        mFirestoreList = (RecyclerView) findViewById(R.id.youtube_list_recycler);
         userID= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         list = new ArrayList<>();
-        videoAdapter =new VideoAdapter(getContext(),list);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(getContext()));
+        videoAdapter =new VideoAdapter(this,list);
+        mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(videoAdapter);
-        add=view.findViewById(R.id.upload_new_video);
+        add= (Button)findViewById(R.id.upload_new_video);
         final String[] name = new String[1];
         final String[] type = new String[1];
         final String[] ins= new String[1];
@@ -72,7 +61,7 @@ public class Institute_Videos_Fragment extends Fragment {
 //        Task<DocumentSnapshot> docReference= firebaseFirestore.collection("Users").document(userID).get();
         DocumentReference documentReference= firebaseFirestore.collection("Users").document(userID);
 
-        documentReference.addSnapshotListener((Executor) this, new EventListener<DocumentSnapshot>() {
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
 
@@ -85,40 +74,40 @@ public class Institute_Videos_Fragment extends Fragment {
                 Log.d("TYPE  Check", "onCreate: "+ type[0]);
 
                 if(type[0].equals("Institute")){
-                    add.setVisibility(View.VISIBLE);
+            add.setVisibility(View.VISIBLE);
 
-                    add.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(getContext(),upload_Videos.class));
-                        }
-                    });
-
-
-                    us=name[0];
-
-
-                    Log.d("check name Dishant", "onCreate: "+ us);
-//        Toast.makeText(getContext(), "userID is "+ userID, Toast.LENGTH_SHORT).show();
-                    //--Query------------------//
-                    Query query = firebaseFirestore.collection("Data").document(us).collection("Videos");
-
-                    query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            ArrayList<VideoModelClass> lis = new ArrayList<>();
-                            for (DocumentSnapshot d : queryDocumentSnapshots) {
-                                VideoModelClass v = d.toObject(VideoModelClass.class);
-                                lis.add(v);
-                                Log.d("gfahfgadh", v.getDate());
-                            }
-                            list.addAll(lis);
-                            videoAdapter.notifyDataSetChanged();
-                            Log.d("gfahfgadh", list.size() + "");
-                        }
-                    });
-
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Videos_page.this,upload_Videos.class));
                 }
+            });
+
+
+               us=name[0];
+
+
+                Log.d("check name Dishant", "onCreate: "+ us);
+//        Toast.makeText(getContext(), "userID is "+ userID, Toast.LENGTH_SHORT).show();
+                //--Query------------------//
+                Query query = firebaseFirestore.collection("Data").document(us).collection("Videos");
+
+                query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        ArrayList<VideoModelClass> lis = new ArrayList<>();
+                        for (DocumentSnapshot d : queryDocumentSnapshots) {
+                            VideoModelClass v = d.toObject(VideoModelClass.class);
+                            lis.add(v);
+                            Log.d("gfahfgadh", v.getDate());
+                        }
+                        list.addAll(lis);
+                        videoAdapter.notifyDataSetChanged();
+                        Log.d("gfahfgadh", list.size() + "");
+                    }
+                });
+
+            }
 
                 else {
                     Query query = firebaseFirestore.collection("Data").document(ins[0]).collection("Videos");
@@ -149,7 +138,7 @@ public class Institute_Videos_Fragment extends Fragment {
 
 
 
-return  view;
+
 
     }
 

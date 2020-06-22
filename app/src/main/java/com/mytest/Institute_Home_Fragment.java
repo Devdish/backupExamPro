@@ -1,5 +1,6 @@
 package com.mytest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,12 @@ public class Institute_Home_Fragment extends Fragment {
         More= view.findViewById(R.id.more);
 
 
-
+      videos.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              startActivity(new Intent(getActivity(),Videos_page.class));
+          }
+      });
 
 return  view;
     }
