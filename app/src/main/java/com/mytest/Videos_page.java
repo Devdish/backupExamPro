@@ -99,11 +99,9 @@ public class Videos_page extends AppCompatActivity {
                         for (DocumentSnapshot d : queryDocumentSnapshots) {
                             VideoModelClass v = d.toObject(VideoModelClass.class);
                             lis.add(v);
-                            Log.d("gfahfgadh", v.getDate());
                         }
                         list.addAll(lis);
                         videoAdapter.notifyDataSetChanged();
-                        Log.d("gfahfgadh", list.size() + "");
                     }
                 });
 

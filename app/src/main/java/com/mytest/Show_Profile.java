@@ -24,9 +24,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.mytest.Firebase.ReadACCreation;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Show_Profile extends AppCompatActivity {
 
@@ -40,7 +42,9 @@ public class Show_Profile extends AppCompatActivity {
     String userID;
     ProgressBar load;
     String statuss;
-    String userIDS;
+    String UID;
+    ReadACCreation creating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +139,8 @@ public class Show_Profile extends AppCompatActivity {
 
                    CreateAccount(Email,Password,fullname,Contact,Gender,DOB,about.getText().toString(),Categ.getText().toString(),applydate.getText().toString(),institute.getText().toString());
 
-                   //                    TransData(Email,Password,fullname,Contact,Gender,DOB,about.getText().toString(),Categ.getText().toString(),applydate.getText().toString(),institute.getText().toString());
+
+                            //                    TransData(Email,Password,fullname,Contact,Gender,DOB,about.getText().toString(),Categ.getText().toString(),applydate.getText().toString(),institute.getText().toString());
                     //=========================================================================================
                 }
             }
@@ -147,17 +152,24 @@ public class Show_Profile extends AppCompatActivity {
     private void CreateAccount(final String Email, final String Password, String fullname, String Contact, String Gender, String DOB, String about, String Categ, String applydate, final String institute) {
 
 
-        mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(Show_Profile.this,"Account Created",Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(Show_Profile.this,"Error Occurs, Try Again",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(Show_Profile.this,"Account Created",Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    Toast.makeText(Show_Profile.this,"Error Occurs, Try Again",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+
+
+        creating= new ReadACCreation(null, Email,Password,Show_Profile.this);
+
+
+
+
    String userIDS= FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent i= new Intent(Show_Profile.this,ShareProfile.class);
         i.putExtra("Email",Email);
@@ -178,4 +190,6 @@ public class Show_Profile extends AppCompatActivity {
         finish();
 
     }
+
+
 }

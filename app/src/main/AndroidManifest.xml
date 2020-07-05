@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShareProfile"></activity>
+        <activity android:name=".QuestionAdded"></activity>
+        <activity android:name=".uploadTest.UploadQuestion" />
+        <activity android:name=".uploadTest.TestInfo" />
+        <activity android:name=".ShareProfile" />
         <activity android:name=".Videos_page" />
         <activity android:name=".RegisteredStudentList" />
         <activity android:name=".StudentRequestList" />

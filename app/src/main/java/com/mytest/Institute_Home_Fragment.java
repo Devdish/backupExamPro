@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.mytest.uploadTest.TestInfo;
+
 public class Institute_Home_Fragment extends Fragment {
 
 
@@ -29,6 +31,13 @@ public class Institute_Home_Fragment extends Fragment {
         students_doubts= view.findViewById(R.id.students_doubts);
         More= view.findViewById(R.id.more);
 
+
+        create_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), TestInfo.class));
+            }
+        });
 
       videos.setOnClickListener(new View.OnClickListener() {
           @Override
