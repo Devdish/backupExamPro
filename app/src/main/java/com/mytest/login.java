@@ -36,8 +36,7 @@ public class login extends AppCompatActivity {
         Password=(EditText)findViewById(R.id.PassL);
         loginbtn=(Button)findViewById(R.id.loginNow);
         forgots=(TextView)findViewById(R.id.forgot);
-         loginprog=(ProgressBar)findViewById(R.id.progressBarLogin);
-
+        loginprog=(ProgressBar)findViewById(R.id.progressBarLogin);
 
         mAuth= FirebaseAuth.getInstance();
 
@@ -74,22 +73,17 @@ public class login extends AppCompatActivity {
                     Password.setError("Enter Password Please");
                 }
                 else {
-
                     loginprog.setVisibility(View.VISIBLE);
-
                     mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
-
                                 Toast.makeText(login.this,"Login Successful",Toast.LENGTH_LONG).show();
-
                                 Intent i=new Intent(login.this,controller.class);
                                 startActivity(i);
                             }
                             else {
-
                                 Toast.makeText(login.this,"Please Check details",Toast.LENGTH_LONG).show();
                             }
 
